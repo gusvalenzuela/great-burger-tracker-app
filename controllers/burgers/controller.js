@@ -22,8 +22,17 @@ router.put(`/api/burgers/:id`, (req, res) => {
     } else {
       res.status(200).end()
     }
-  });
-});
+  })
+})
+
+
+router.post(`/api/burgers`, function (req, res) {
+  burger.create( [`burger_name`], [req.body.name], result => {
+      // Send back the ID of the new burger
+      console.log(result)
+      res.json({ id: result.insertId })
+    })
+})
 
 
 // Export routes for server.js to use.

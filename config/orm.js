@@ -56,7 +56,14 @@ const orm = {
       if (err) { throw err; }
       cb(res)
     })
-  }
+  },
+
+  create: (table, cols, vals, cb) => {
+    connection.query(`INSERT INTO ${table} (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)})`, vals, (err, result) => {
+      if (err) { throw err; }
+      cb(result)
+    })
+  },
 
 }
 

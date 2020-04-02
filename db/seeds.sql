@@ -1,6 +1,6 @@
-INSERT INTO burgers (burger_name) VALUES ('Double Quarter Pounder Deluxe');
-INSERT INTO burgers (burger_name) VALUES ('Spicy Chicken Sandwich');
-INSERT INTO burgers (burger_name) VALUES ('Bacon Cheeseburger');
-INSERT INTO burgers (burger_name, devoured) VALUES ('Mushroom Double Great Burger', true);
-INSERT INTO burgers (burger_name, devoured) VALUES ('Exxtreme Burgah', true);
-INSERT INTO burgers (burger_name) VALUES ('Great Burger Jr.');
+INSERT INTO burgers (burger_name, date_created) VALUES ('Double Quarter Pounder Deluxe', NOW());
+INSERT INTO burgers (burger_name, date_created) VALUES ('Spicy Chicken Sandwich', NOW());
+INSERT INTO burgers (burger_name, date_created) VALUES ('Bacon Cheeseburger', NOW());
+INSERT INTO burgers (burger_name, date_created) VALUES ('Mushroom Double Great Burger', NOW());
+INSERT INTO burgers (burger_name, date_created) VALUES ('Exxtreme Burgah', NOW());
+INSERT INTO burgers (burger_name, date_created) VALUES ('Great Burger Jr.', NOW());

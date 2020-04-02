@@ -3,9 +3,9 @@ $(() => {
   $(`.change-state`).on(`click`, e => {
     // reserve for later (eat again)
     // const newlyEaten = $(this).data(`newstate`)
-
+    
     // Send the PUT request.
-    $.ajax(`/api/burgers/` + $(this).data(`id`), {
+    $.ajax(`/api/burgers/` + $(e.target).data(`id`), {
       type: `PUT`,
       data: {
         devoured: 1,
@@ -19,40 +19,35 @@ $(() => {
     );
   });
 
-  // $(`.create-form`).on(`submit`, function(event) {
-  //   // Make sure to preventDefault on a submit event.
-  //   event.preventDefault()
+  $(`.create-form`).on(`submit`, e => {
+    // Make sure to preventDefault on a submit event.
+    e.preventDefault()
 
-  //   var newBurger = {
-  //     // name: $(`#ca`).val().trim(),
-  //     devour: $(`[name=devoured]:checked`).val().trim()
-  //   };
+    const newBurger = {
+      name: $(`#burger`).val().trim(),
+    };
 
-  //   // Send the POST request.
-  //   $.ajax(`/api/burgers`, {
-  //     type: `POST`,
-  //     data: newburger
-  //   }).then(
-  //     function() {
-  //       console.log(`created new burger`)
-  //       // Reload the page to get the updated list
-  //       location.reload()
-  //     }
-  //   )
-  // })
+    // Send the POST request.
+    $.ajax(`/api/burgers`, {
+      type: `POST`,
+      data: newBurger
+    }).then(
+      function() {
+        // Reload the page to get the updated list
+        location.reload()
+      }
+    )
+  })
 
-  $(`.devour-burger`).on(`click`, function (event) {
+  $(`.devour-burger`).on(`click`, e => {
     var id = $(this).data(`id`)
 
     // Send the DELETE request.
     $.ajax(`/api/burgers/` + id, {
       type: `DELETE`
-    }).then(
-      function () {
-        console.log(`burger devoured`, id)
-        // Reload the bpage to get the updated list
-        location.reload()
-      }
-    )
+    }).then(() => {
+      // Reload the bpage to get the updated list
+      location.reload()
+    })
   })
 })
