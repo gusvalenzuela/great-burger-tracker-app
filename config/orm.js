@@ -1,5 +1,5 @@
 // Import MySQL connection.
-var connection = require(`../config/connection.js`);
+const connection = require(`../config/connection.js`);
 
 // Helper function for SQL syntax.
 // Let's say we want to pass 3 values into the mySQL query.
@@ -40,17 +40,17 @@ function objToSql(ob) {
 }
 
 // Object for all our SQL statement functions.
-var orm = {
-  all: function(tableInput, cb) {
-    var queryString = `SELECT * FROM ` + tableInput + `;`;
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err
-      }
+const orm = {
+  all: (tableInput, cb) => {
+    let queryString = `SELECT * FROM ${tableInput};`;
+    connection.query(queryString, (err, result) => {
+      if (err) { throw err }
       cb(result)
     })
   },
+
   
+
 }
 
 // Export the orm object for the model (burger.js).
