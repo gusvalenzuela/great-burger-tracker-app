@@ -49,6 +49,14 @@ const orm = {
     })
   },
 
+  allByDate: (tableInput, type, cb) => {
+    let queryString = `SELECT * FROM ${tableInput} ORDER BY date_eaten ${type};`;
+    connection.query(queryString, (err, result) => {
+      if (err) { throw err }
+      cb(result)
+    })
+  },
+
   // An example of objColVals would be {devoured: true, amt_eaten: 4}
   // example of condition would be {id: 42}
   update: (table, objColVals, condition, cb) => {

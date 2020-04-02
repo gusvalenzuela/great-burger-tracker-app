@@ -1,46 +1,71 @@
-<div class="jumbotron text-center">
-  <p class="display-2 brand-name">Great Burger</p>
-
-</div>
-<div class="container-fluid">
-  <div class="row">
-    yes
+<div class="jumbotron jumbotron-fluid p-3 bg-pdp text-white" id="jumbotron">
+  <div class="container">
+    <h1 class="display-4 brand-name">Gooder Burger</h1>
+    <p class="lead">Home of the Gooder Burger™! <br>A great burger virtual meal creater. <br> Enjoy.</p>
   </div>
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <h2>Burgers to eat:</h2>
+</div>
 
-      <ul>
+<div class="container p-0">
+  <div class="row m-0">
+    <div class="col-12 text-center">
+      HELLO WORLD
+    </div>
+  </div>
+  <div class="row row-cols-1 row-cols-lg-2 m-0">
+    {{!-- left side  --}}
+    <div class="col">
+      <h2 class="text-center mb-3">BURGERS TO EAT</h2>
+
+      <ul class="p-0 text-white" style="list-style: none;">
         {{#each burgers}}
         {{#unless devoured}}
-        {{> burgers/burger-block devour=false}}
+        <li class="p-0 mb-3 d-flex justify-content-between">
+          <span class="m-0 p-2">{{burger_name}}</span>
+          <button class="change-state btn rounded-0" data-id="{{id}}" data-eaten="{{devour}}">
+            Click here to eat it!
+          </button>
+
+        </li>
         {{/unless}}
         {{/each}}
       </ul>
     </div>
-    <div class="col-12 col-md-6">
-      <h2>Devoured Burgers</h2>
 
-      <ul>
+    {{!-- right side --}}
+    <div class="col">
+      <h2 class="text-center mb-3">DEVOURED BURGERS</h2>
+
+      <ul class="text-warning p-0" style="list-style: none;">
         {{#each burgers}}
         {{#if devoured}}
-        {{> burgers/burger-block devour=true}}
+        <li class="p-0 mb-3 d-flex justify-content-between">
+
+          <span class="m-0 p-2" style="text-decoration:line-through;">{{burger_name}}</span>
+          <span class="devoured-info text-white" data-id="{{id}}" data-eaten="{{devour}}">
+            Eaten: {{date_eaten}}
+          </span>
+
+        </li>
         {{/if}}
         {{/each}}
       </ul>
     </div>
+
   </div>
 
-<div class="row">
-  <h2>Add a Burger</h2>
-  <form class="create-form">
+  <div class="row bg-hexbutt m-0">
+    <div class="col-12 d-flex justify-content-center p-4">
+      <form class="row create-form justify-content-center">
+        <h3 class="text-center mb-4">Enter the name of burger you want to devour:</h3>
+        <div class="form-group col-12">
+          <textarea type="text" id="burger" name="name" class="w-100 text-center p-2"></textarea> 
+        </div>
 
-    <div class="form-group">
-      <label for="burger">Burger Name:</label>
-      <input type="text" id="burger" name="name">
+        <button type="submit" class="btn2 rounded-0">Add to burger list</button>
+
+      </form>
+
     </div>
+  </div>
+</div>
 
-    <button type="submit">Add Burger</button>
-  </form>
-</div>
-</div>

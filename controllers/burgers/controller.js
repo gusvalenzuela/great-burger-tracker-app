@@ -1,13 +1,18 @@
 const express = require(`express`);
 const router = express.Router();
+const moment = require(`moment-timezone`)
 
 // Import the model (burger.js) to use its database functions.
 const burger = require(`../../models/burger.js`);
 
 // Create all our routes and set up logic within those routes where required.
 router.get(`/`, function (req, res) {
-  burger.all(function (data) {
-    // console.log(`sending all object: `,hbsObject);
+  burger.allByDate(`DESC`, data => {
+    data = data.map(i => {
+      i.date_eaten = moment(i.date_eaten).calendar()
+      return i
+    })
+    // console.log(moment.tz(dateStr).config)
     res.render(`index`, { burgers: data })
   })
 })
@@ -29,7 +34,6 @@ router.put(`/api/burgers/:id`, (req, res) => {
 router.post(`/api/burgers`, function (req, res) {
   burger.create( [`burger_name`], [req.body.name], result => {
       // Send back the ID of the new burger
-      console.log(result)
       res.json({ id: result.insertId })
     })
 })

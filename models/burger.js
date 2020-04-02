@@ -7,6 +7,11 @@ const burger = {
       cb(res)
     })
   },
+  allByDate: function(type, cb) {
+    orm.allByDate(`burgers`, type, res => {
+      cb(res)
+    })
+  },
   // The variables cols and vals are arrays.
   create: (cols, vals, cb) => {
     orm.create(`burgers`, cols, vals, res => {

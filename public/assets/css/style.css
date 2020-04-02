@@ -1,8 +1,33 @@
+body, 
+html{
+  background: #FDB147;
+  margin: 0;
+  padding: 0;
+}
 li {
   padding: 5px;
   margin: 5px;
-  background: #faebd7;
+  background: #08787F;
 }
+.bg-hexbutt{
+  background: #FDB147;
+}
+.bg-pdp{
+  background: #3F012C !important;
+}
+#jumbotron{
+  border-bottom: 3px solid #08787F;
+}
+/* color pallete:
+  
+hexahedral butterscotch
+#FDB147
+peridotic dark plum
+#3F012C
+screaming deep aqua
+#08787F
+
+*/
 
 .label {
   font-weight: bold;
@@ -16,4 +41,50 @@ li {
 
 .form-group {
   margin-bottom: 5px;
+}
+/* #burger{
+  padding: 2em;
+} */
+
+.btn, .btn2 {
+  background: #3F012C !important;
+  color: aliceblue!important;
+  border: 3px groove transparent !important;
+  font-size: 1em;
+}
+.btn:hover{
+  /* border-color: rgba(63, 1, 44, 0.836) !important; */
+  font-size: 1.03em;
+  color: #FDB147 !important;
+}
+.devoured-info{
+  background: #3F012C;
+  padding: .5em;
+}
+.pusher {
+  height: 75px;
+}
+
+.footer {
+  background: #000;
+  color: white;
+  border-top: 5px solid #08787F;
+  height: 150px;
+  padding-top: 16px;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  /* position: fixed; */
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@media screen and (max-width: 576px){
+  .btn, .devoured-info {
+    font-size: .69em !important;
+  }
+  div ul span {
+    font-size: .80em !important;
+  }
 }

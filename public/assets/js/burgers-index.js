@@ -1,9 +1,18 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(() => {
+  // const isBlank = arg => {
+    
+  //   let test = arg.split(``)
+  //   test.forEach(element => {
+  //     console.log(element)
+  //   });
+  //   // console.log
+  // }
+
   $(`.change-state`).on(`click`, e => {
     // reserve for later (eat again)
     // const newlyEaten = $(this).data(`newstate`)
-    
+
     // Send the PUT request.
     $.ajax(`/api/burgers/` + $(e.target).data(`id`), {
       type: `PUT`,
@@ -22,24 +31,31 @@ $(() => {
   $(`.create-form`).on(`submit`, e => {
     // Make sure to preventDefault on a submit event.
     e.preventDefault()
+    const input = $(`#burger`).val().trim()
 
-    const newBurger = {
-      name: $(`#burger`).val().trim(),
-    };
+    if (!input || input == `` || input === undefined) {
+      return $(`#burger`).val(``)
+    } else {
 
-    // Send the POST request.
-    $.ajax(`/api/burgers`, {
-      type: `POST`,
-      data: newBurger
-    }).then(
-      function() {
-        // Reload the page to get the updated list
-        location.reload()
-      }
-    )
+      const newBurger = {
+        name: input,
+      };
+
+      // Send the POST request.
+      $.ajax(`/api/burgers`, {
+        type: `POST`,
+        data: newBurger
+      }).then(
+        function () {
+          // Reload the page to get the updated list
+          location.reload()
+        }
+      )
+
+    }
   })
 
-  $(`.devour-burger`).on(`click`, e => {
+  $(`.delete-burger`).on(`click`, e => {
     var id = $(this).data(`id`)
 
     // Send the DELETE request.
