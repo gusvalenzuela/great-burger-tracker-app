@@ -1,24 +1,41 @@
-<h1>Burgers!</h1>
+<div class="jumbotron text-center">
+  <p class="display-2 brand-name">Great Burger</p>
 
-<h2>Burgers that are not sleepy!</h2>
+</div>
+<div class="container">
+  <div class="row">
+    yes
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <h2>Burgers to eat:</h2>
 
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devour=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+      <ul>
+        {{#each burgers}}
+        {{#unless devoured}}
+        {{> burgers/burger-block devour=false}}
+        {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+    <div class="col-6">
+      <h2>Devoured Burgers</h2>
 
-<h2>burgers that are devoury!</h2>
+      <ul>
+        {{#each burgers}}
+        {{#if devoured}}
+        {{> burgers/burger-block devour=true}}
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
 
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/burger-block devour=false}}
-    {{/if}}
-  {{/each}}
-</ul>
+
+
+
+
 
 <h2>Add a Burger</h2>
 <form class="create-form">

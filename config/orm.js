@@ -49,7 +49,14 @@ const orm = {
     })
   },
 
-  
+  // An example of objColVals would be {devoured: true, amt_eaten: 4}
+  // example of condition would be {id: 42}
+  update: (table, objColVals, condition, cb) => {
+    connection.query(`UPDATE ${table} SET ${objToSql(objColVals)} WHERE ${condition}`, (err, res) => {
+      if (err) { throw err; }
+      cb(res)
+    })
+  }
 
 }
 

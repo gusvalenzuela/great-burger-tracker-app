@@ -1,26 +1,21 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
-$(function() {
-  $(`.change-state`).on(`click`, function(event) {
-
-    console.log(`click`, event.target)
-
-    const id = $(this).data(`id`);
-    const newlyEaten = $(this).data(`newstate`)
-
-    const newEatState = {
-      sleepy: newlyEaten
-    };
+$(() => {
+  $(`.change-state`).on(`click`, e => {
+    // reserve for later (eat again)
+    // const newlyEaten = $(this).data(`newstate`)
 
     // Send the PUT request.
-    $.ajax(`/api/burgers/` + id, {
+    $.ajax(`/api/burgers/` + $(this).data(`id`), {
       type: `PUT`,
-      data: newEatState
-    }).then(
-      function() {
-        console.log(`changed devoured to`, newlyEaten)
-        // Reload the page to get the updated list
-        location.reload()
+      data: {
+        devoured: 1,
+        date_eaten: `NOW()`
       }
+    }).then(() => {
+      console.log(`burger devoured!`)
+      // Reload the page to get the updated list
+      location.reload()
+    }
     );
   });
 
@@ -46,14 +41,14 @@ $(function() {
   //   )
   // })
 
-  $(`.devour-burger`).on(`click`, function(event) {
+  $(`.devour-burger`).on(`click`, function (event) {
     var id = $(this).data(`id`)
 
     // Send the DELETE request.
     $.ajax(`/api/burgers/` + id, {
       type: `DELETE`
     }).then(
-      function() {
+      function () {
         console.log(`burger devoured`, id)
         // Reload the bpage to get the updated list
         location.reload()
