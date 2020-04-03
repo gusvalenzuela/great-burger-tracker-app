@@ -3,12 +3,13 @@
     <div class="col-2"></div>
 
     <div class="col text-center p-0">
-      
+
       <div class="intro-para"><span style="text-align: left;">Welcome to Gooder Burger. <br>Home of the Gooder
           Burger™!<br></span><br>
-        <p style="text-align: justify;">Below you'll find a list of burgers you may "devour" by clicking on the button next to its
-          name and "eating" it. Add burgers to the list by filling the tiny form way below. When "devouring" a burger it
-          moves to the Devoured Burgers list. Have fun!</p>
+        <p style="text-align: justify;">Below you'll find a list of burgers you may "devour" by clicking on the button
+          next to its
+          name. You may add more burgers to the list by filling the tiny form way below. "Devouring" a burger simply
+          moves it to the Devoured Burgers list. Have fun!</p>
       </div>
     </div>
     <div class="col-2"></div>
@@ -27,7 +28,7 @@
         <li class="p-0 mb-3 d-flex justify-content-between">
           <span class="m-0 p-2">{{burger_name}}</span>
           <button class="change-state btn rounded-0" data-id="{{id}}" data-eaten="{{devour}}">
-            Eat it!
+            Devour it!
           </button>
 
         </li>
@@ -43,13 +44,20 @@
       <ul class="text-white p-0" style="list-style: none;" id="right-side-ul">
         {{#each burgers}}
         {{#if devoured}}
-        <li class="p-0 mb-3 d-flex justify-content-between">
+        <li class="p-0 mb-3 d-flex justify-content-between" data-id="{{id}}" data-name="burger-info">
 
-          <span class="m-0 p-2" style="text-decoration:line-through;">{{burger_name}}</span>
-          <span class="devoured-info" data-id="{{id}}" data-eaten="{{devour}}">
-            Eaten: {{date_eaten}}
+          <span class="m-0 p-2" style="text-decoration:line-through;" data-name="burger-info"
+            data-id="{{id}}">{{burger_name}}</span>
+          <span class="devoured-info" data-id="{{id}}" data-name="devoured-info">
+            <span>Eaten: {{date_eaten}}</span>
+
+            <span class="data-eaten-buttons" style="display: none;">
+              <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="edit">
+                <i class="fa fa-edit" data-id="{{id}}" data-isbutton="true" data-typeofbutton="edit"></i></button>
+              <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="delete">
+                <i class="fa fa-close" data-id="{{id}}" data-isbutton="true" data-typeofbutton="delete"></i></button>
+            </span>
           </span>
-
         </li>
         {{/if}}
         {{/each}}

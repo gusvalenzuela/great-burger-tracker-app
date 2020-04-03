@@ -32,10 +32,17 @@ router.put(`/api/burgers/:id`, (req, res) => {
 
 
 router.post(`/api/burgers`, function (req, res) {
-  burger.insertOne( [`burger_name`], [req.body.name], result => {
-      // Send back the ID of the new burger
-      res.json({ id: result.insertId })
-    })
+  burger.insertOne([`burger_name`], [req.body.name], result => {
+    // Send back the ID of the new burger
+    res.json({ id: result.insertId })
+  })
+})
+
+router.delete(`/api/burgers/:id`, function (req, res) {
+  burger.delete(req.params.id, result => {
+    // Send back the ID of the new burger
+    res.json({ id: result.insertId })
+  })
 })
 
 

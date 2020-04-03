@@ -1,13 +1,11 @@
 body, html {
   background: var(--main-color) !important;
-  /* margin: 0;
-  padding: 0; */
 }
 
 li {
   padding: 5px;
   margin: 5px;
-  background: #08787F;
+  background: var(--accent-color);
 }
 
 .bg-hexbutt {
@@ -15,23 +13,11 @@ li {
 }
 
 .bg-pdp {
-  background: #3F012C !important;
-}
-
-#jumbotron {
-  border-bottom: 3px solid black;
-  background-color: chocolate;
-  background-image: linear-gradient(#00000023, #3f012c54), url(../images/filipe-de-rodrigues-JHUkH7nZvTQ-unsplash.jpg);
-  background-size: cover;
-  background-position: center;
-}
-
-#jumbotron .lead, .brand-name {
-  font-weight: 600 !important;
+  background: var(--secondary-color) !important;
 }
 
 /* color pallete:
-  
+
 hexahedral butterscotch
 #FDB147
 peridotic dark plum
@@ -43,6 +29,22 @@ screaming deep aqua
 
 :root {
   --main-color: #FDB147;
+  --secondary-color: #3F012C;
+  --accent-color: #08787F;
+}
+
+#jumbotron {
+  border-bottom: 3px solid black;
+  background-color: #3F012C;
+  background-image: 
+    /* linear-gradient(#00000023, var(--secondary-color)54),  */
+    url(../images/filipe-de-rodrigues-JHUkH7nZvTQ-unsplash.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+
+#jumbotron .lead, .brand-name {
+  font-weight: 600 !important;
 }
 
 .label {
@@ -73,7 +75,7 @@ screaming deep aqua
 } */
 
 .btn, .btn2 {
-  background: #3F012C !important;
+  background: var(--secondary-color) !important;
   color: aliceblue!important;
   border: 3px groove transparent !important;
   font-size: 1em;
@@ -86,14 +88,14 @@ screaming deep aqua
 }
 
 .devoured-info {
-  background: #3F012C;
+  background: var(--secondary-color);
   padding: .5em;
 }
 
 .footer {
   background: #000;
   color: white;
-  border-top: 5px solid #08787F;
+  border-top: 5px solid var(--accent-color);
   padding-top: 1em;
   padding-bottom: 3.6947897em;
 }

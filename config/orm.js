@@ -73,6 +73,15 @@ const orm = {
     })
   },
 
+  delete: (table, id, cb) => {
+    let queryString = `DELETE from ${table} WHERE id = ${id}`
+    connection.query(queryString, (err, result) => {
+      if (err) throw err
+      cb(result)
+    })
+    // console.log(queryString)
+  },
+
 }
 
 // Export the orm object for the model (burger.js).

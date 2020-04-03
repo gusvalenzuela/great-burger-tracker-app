@@ -1,13 +1,66 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(() => {
-  if($(`#left-side-ul`)[0].children.length === 0){
-    $(`#left-side-ul`)[0].innerHTML = `<p class="p-2 bg-pdp">No burgers to devour. See form below to enter one.</p>`
+  const leftCol = $(`#left-side-ul`)[0]
+  const rightCol = $(`#right-side-ul`)[0]
+  // if no list items in "burgers to eat" display message
+  if (leftCol.children.length === 0) {
+    leftCol.innerHTML = `<p class="p-2 bg-pdp">No burgers to devour. See form below to enter one.</p>`
     // console.log($(`#left-side-ul`))
-  } 
-  
-  if($(`#right-side-ul`)[0].children.length === 0){
-    $(`#right-side-ul`)[0].innerHTML = `<p class="p-2 bg-pdp">No burgers have been eaten. Enter and then devour one.</p>`
   }
+
+  // if no list items in "devoured burgers" display message
+  if (rightCol.children.length === 0) {
+    rightCol.innerHTML = `<p class="p-2 bg-pdp">No burgers have been eaten. Enter and then devour one.</p>`
+  }
+
+
+  $(rightCol).on(`click`, e => {
+
+    const infoList = $(`.devoured-info`)
+
+    // e.preventDefault()
+    if ($(e.target).data(`name`) === `burger-info`) {
+      for (let i = 0; i < infoList.length; i++) {
+
+        if ($(infoList[i]).data(`id`) === $(e.target).data(`id`)) {
+
+          if ($(infoList[i].children[1]).attr(`style`) === `display: none;`) {
+
+            $(infoList[i].children[0]).hide()
+            $(infoList[i].children[1]).show()
+
+          } else {
+            $(infoList[i].children[1]).hide()
+            $(infoList[i].children[0]).show()
+
+          }
+
+        }
+
+      }
+    }
+
+    if ($(e.target).data(`isbutton`)) {
+      switch ($(e.target).data(`typeofbutton`)) {
+        case `edit`:
+          console.log(`editing stuff`)
+          break;
+        case `delete`:
+          // Send the DELETE request.
+          $.ajax(`/api/burgers/` + $(e.target).data(`id`), {
+            type: `DELETE`,
+          }).then(() => {
+              // Reload the page to get the updated list
+              location.reload()
+            }
+          )
+          break;
+
+        default:
+          break;
+      }
+    }
+  })
 
   $(`.change-state`).on(`click`, e => {
     // reserve for later (eat again)
