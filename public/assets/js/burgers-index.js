@@ -2,6 +2,14 @@
 $(() => {
   const leftCol = $(`#left-side-ul`)[0]
   const rightCol = $(`#right-side-ul`)[0]
+  let activeButtonsPrimary = $()
+  let activeButtonsSecondary = $()
+
+  const resetPrimary = () => {
+    activeButtonsPrimary.show()
+    activeButtonsSecondary.hide()
+  }
+
   // if no list items in "burgers to eat" display message
   if (leftCol.children.length === 0) {
     leftCol.innerHTML = `<p class="p-2 bg-pdp">No burgers to devour. See form below to enter one.</p>`
@@ -13,9 +21,7 @@ $(() => {
     rightCol.innerHTML = `<p class="p-2 bg-pdp">No burgers have been eaten. Enter and then devour one.</p>`
   }
 
-
-  $(rightCol).on(`click`, e => {
-
+  const dothething = e => {
     const infoList = $(`.devoured-info`)
 
     e.preventDefault()
@@ -25,13 +31,15 @@ $(() => {
         if ($(infoList[i]).data(`id`) === $(e.target).data(`id`)) {
 
           if ($(infoList[i].children[1].children[0]).attr(`style`) === `display: none;`) {
-
+            resetPrimary()
+            activeButtonsPrimary = $(infoList[i].children[0])
+            activeButtonsSecondary = $(infoList[i].children[1].children[0])
+            // console.log(activeButtons)
             $(infoList[i].children[0]).hide()
             $(infoList[i].children[1].children[0]).show()
 
           } else {
-            console.log($(infoList[i].children[1].children[0]))
-            // $($(infoList[i].children[0]).children[0]).show()
+            // console.log($(infoList[i].children[1].children[0]))
             $(infoList[i].children[0]).show()
             $(infoList[i].children[1].children[0]).hide()
 
@@ -45,16 +53,30 @@ $(() => {
     if ($(e.target).data(`isbutton`)) {
       switch ($(e.target).data(`typeofbutton`)) {
         case `edit`:
-          console.log(`editing stuff`)
+          let newName = prompt(`Enter new name for burger`)
+
+          if(newName !== null) {
+            newName = newName.trim()
+          }
+
+          // makes sure input is not empty string
+          if (newName.length > 0) {
+            updateBurgerName($(e.target).data(`id`), newName)
+          }
+          
+          resetPrimary()
+          break;
+        case `save`:
+          console.log(`saving stuff`)
           break;
         case `add`:
           // let confirm = 
-          if (confirm(`Would you like to add this back to the "burgers to eat" list?`)) {
+          if (confirm(`Would you like to add this back to the "burgers to eat" list?`) === true) {
             updateDevour($(e.target).data(`id`), 0)
           }
           break;
         case `delete`:
-          if (confirm(`Would you like to delete this burger?`)) {
+          if (confirm(`Would you like to delete this burger?`) === true) {
             // Send the DELETE request - passing id as parameter
             deleteBurger($(e.target).data(`id`))
           }
@@ -64,6 +86,20 @@ $(() => {
           break;
       }
     }
+  }
+
+  $(rightCol).on(`click`, e => {
+    dothething(e)
+
+  })
+  $(leftCol).on(`click`, e => {
+    dothething(e)
+  })
+  activeButtonsPrimary.focusout(e => {
+    console.log(e, `focus out`)
+  })
+  activeButtonsSecondary.on(`focusout`, e => {
+    console.log(e, `focus out`)
   })
 
   $(`.change-state`).on(`click`, e => {
@@ -117,6 +153,21 @@ $(() => {
     )
   }
 
+  const updateBurgerName = (id, name) => {
+    console.log(`going to update id# ${id} with new name: ${name}`)
+    // Send the PUT request.
+    $.ajax(`/api/burgers/` + id, {
+      type: `PUT`,
+      data: {
+        burger_name: name
+      }
+    }).then(() => {
+      console.log(`burger updated!`)
+      // Reload the page to get the updated list
+      location.reload()
+    }
+    )
+  }
   const updateDevour = (id, state) => {// Send the POST request.
     // Send the PUT request.
     $.ajax(`/api/burgers/` + id, {

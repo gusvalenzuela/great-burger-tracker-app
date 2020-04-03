@@ -27,9 +27,30 @@
         {{#unless devoured}}
         <li class="p-0 mb-3 d-flex justify-content-between">
           <span class="m-0 p-2">{{burger_name}}</span>
-          <button class="change-state btn rounded-0" data-id="{{id}}" data-eaten="{{devour}}">
-            Devour it!
-          </button>
+          <div class="devoured-info d-flex" data-id="{{id}}" data-name="devoured-info">
+            <button class="change-state btn rounded-0 py-0" data-id="{{id}}" data-eaten="{{devour}}">
+              Devour it!
+            </button>
+
+            <div class="data-eaten-buttons">
+              <span style="display: none;">
+                <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="edit">
+                  <i class="fa fa-pencil" data-id="{{id}}" data-isbutton="true" data-typeofbutton="edit"></i></button>
+                {{!-- <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="save">
+                  <i class="fa fa-check" data-id="{{id}}" data-isbutton="true" data-typeofbutton="save"></i></button> --}}
+              </span>
+              <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="expand"
+                data-name="morebutton">
+                <i class="fa fa-arrows-h" data-id="{{id}}" data-isbutton="true" data-typeofbutton="expand"
+                  data-name="morebutton"></i></button>
+              {{!-- <span>
+              </span> --}}
+            </div>
+            {{!-- <div> --}}
+            {{!-- </div> --}}
+          </div>
+
+
 
         </li>
         {{/unless}}
@@ -49,7 +70,7 @@
           <span class="m-0 p-2" style="text-decoration:line-through;" data-name="burger-info"
             data-id="{{id}}">{{burger_name}}</span>
           <div class="devoured-info d-flex" data-id="{{id}}" data-name="devoured-info">
-            <span class="p-1">Eaten: {{date_eaten}}</span>
+            <span class="p-1">{{date_eaten}}</span>
 
             <div class="data-eaten-buttons">
               <span style="display: none;">
@@ -81,8 +102,7 @@
       <form class="row create-form justify-content-center" id="burger-form">
         <h5 class="text-center mb-4">Name of burger you want to devour:</h5>
         <div class="form-group col-12">
-          <input type="text" id="burger" name="name" placeholder="enter name"
-            class="w-100 text-center p-2"></input>
+          <input type="text" id="burger" name="name" placeholder="enter name" class="w-100 text-center p-2"></input>
         </div>
 
         <button type="submit" class="btn2 rounded-0">Add to burger list</button>
