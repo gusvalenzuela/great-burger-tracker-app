@@ -17,14 +17,16 @@ li {
 }
 #jumbotron{
   border-bottom: 3px solid black;
-  background-image: linear-gradient(#3F012C36, rgba(0, 0, 0, 0.33)),
-                  url(../images/filipe-de-rodrigues-JHUkH7nZvTQ-unsplash.jpg);
+  background-color: chocolate ;
+  background-image: linear-gradient(#00000023, #3f012c54),
+  url(../images/filipe-de-rodrigues-JHUkH7nZvTQ-unsplash.jpg);
   background-size: cover;
   background-position: center;
 }
 
 #jumbotron .lead , .brand-name {
   font-weight: 600 !important;
+  
 }
 
 /* color pallete:
@@ -44,11 +46,18 @@ screaming deep aqua
 .label {
   font-weight: bold;
 }
+
 .intro-para{
-  background: wheat;
-  border: 2px inset black;
-  padding: .6em;
-  text-align: justify;
+  background: #3F012C;
+  color: white;
+  /* border-bottom: 3px inset var(--main-color); */
+  padding: 2em 0;
+  margin-bottom: 4em;
+  /* text-align: left; */
+}
+.ph-divs{
+  background: #3F012C;
+  margin-bottom: 4em;
 }
 
 .create-update-form {
