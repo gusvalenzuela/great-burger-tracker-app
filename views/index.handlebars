@@ -19,7 +19,7 @@
 <div class="container-lg p-0">
   <div class="row row-cols-1 row-cols-md-2 m-0">
     {{!-- left side  --}}
-    <div class="col mb-4">
+    <div class="col mb-4 p-1">
       <h2 class="text-center mb-3">BURGERS TO EAT</h2>
 
       <ul class="p-0 text-white text-center" style="list-style: none;" id="left-side-ul">
@@ -38,7 +38,7 @@
     </div>
 
     {{!-- right side --}}
-    <div class="col mb-4">
+    <div class="col mb-4 p-1">
       <h2 class="text-center mb-3">DEVOURED BURGERS</h2>
 
       <ul class="text-white p-0" style="list-style: none;" id="right-side-ul">
@@ -48,16 +48,26 @@
 
           <span class="m-0 p-2" style="text-decoration:line-through;" data-name="burger-info"
             data-id="{{id}}">{{burger_name}}</span>
-          <span class="devoured-info" data-id="{{id}}" data-name="devoured-info">
-            <span>Eaten: {{date_eaten}}</span>
+          <div class="devoured-info d-flex" data-id="{{id}}" data-name="devoured-info">
+            <span class="p-1">Eaten: {{date_eaten}}</span>
 
-            <span class="data-eaten-buttons" style="display: none;">
-              <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="edit">
-                <i class="fa fa-edit" data-id="{{id}}" data-isbutton="true" data-typeofbutton="edit"></i></button>
-              <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="delete">
-                <i class="fa fa-close" data-id="{{id}}" data-isbutton="true" data-typeofbutton="delete"></i></button>
-            </span>
-          </span>
+            <div class="data-eaten-buttons">
+              <span style="display: none;">
+                <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="delete">
+                  <i class="fa fa-remove" data-id="{{id}}" data-isbutton="true" data-typeofbutton="delete"></i></button>
+                <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="add">
+                  <i class="fa fa-plus" data-id="{{id}}" data-isbutton="true" data-typeofbutton="add"></i></button>
+              </span>
+              <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="expand"
+                data-name="morebutton">
+                <i class="fa fa-arrows-h" data-id="{{id}}" data-isbutton="true" data-typeofbutton="expand"
+                  data-name="morebutton"></i></button>
+              {{!-- <span>
+              </span> --}}
+            </div>
+            {{!-- <div> --}}
+            {{!-- </div> --}}
+          </div>
         </li>
         {{/if}}
         {{/each}}
@@ -71,8 +81,8 @@
       <form class="row create-form justify-content-center" id="burger-form">
         <h5 class="text-center mb-4">Name of burger you want to devour:</h5>
         <div class="form-group col-12">
-          <textarea type="text" id="burger" name="name" placeholder="enter name"
-            class="w-100 text-center p-2"></textarea>
+          <input type="text" id="burger" name="name" placeholder="enter name"
+            class="w-100 text-center p-2"></input>
         </div>
 
         <button type="submit" class="btn2 rounded-0">Add to burger list</button>

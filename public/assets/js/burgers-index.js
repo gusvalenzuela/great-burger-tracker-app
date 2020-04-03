@@ -18,20 +18,22 @@ $(() => {
 
     const infoList = $(`.devoured-info`)
 
-    // e.preventDefault()
-    if ($(e.target).data(`name`) === `burger-info`) {
+    e.preventDefault()
+    if ($(e.target).data(`name`) === `morebutton`) {
       for (let i = 0; i < infoList.length; i++) {
 
         if ($(infoList[i]).data(`id`) === $(e.target).data(`id`)) {
 
-          if ($(infoList[i].children[1]).attr(`style`) === `display: none;`) {
+          if ($(infoList[i].children[1].children[0]).attr(`style`) === `display: none;`) {
 
             $(infoList[i].children[0]).hide()
-            $(infoList[i].children[1]).show()
+            $(infoList[i].children[1].children[0]).show()
 
           } else {
-            $(infoList[i].children[1]).hide()
+            console.log($(infoList[i].children[1].children[0]))
+            // $($(infoList[i].children[0]).children[0]).show()
             $(infoList[i].children[0]).show()
+            $(infoList[i].children[1].children[0]).hide()
 
           }
 
@@ -45,15 +47,17 @@ $(() => {
         case `edit`:
           console.log(`editing stuff`)
           break;
+        case `add`:
+          // let confirm = 
+          if (confirm(`Would you like to add this back to the "burgers to eat" list?`)) {
+            updateDevour($(e.target).data(`id`), 0)
+          }
+          break;
         case `delete`:
-          // Send the DELETE request.
-          $.ajax(`/api/burgers/` + $(e.target).data(`id`), {
-            type: `DELETE`,
-          }).then(() => {
-              // Reload the page to get the updated list
-              location.reload()
-            }
-          )
+          if (confirm(`Would you like to delete this burger?`)) {
+            // Send the DELETE request - passing id as parameter
+            deleteBurger($(e.target).data(`id`))
+          }
           break;
 
         default:
@@ -63,22 +67,13 @@ $(() => {
   })
 
   $(`.change-state`).on(`click`, e => {
-    // reserve for later (eat again)
-    // const newlyEaten = $(this).data(`newstate`)
 
-    // Send the PUT request.
-    $.ajax(`/api/burgers/` + $(e.target).data(`id`), {
-      type: `PUT`,
-      data: {
-        devoured: 1,
-        date_eaten: `NOW()`
-      }
-    }).then(() => {
-      console.log(`burger devoured!`)
-      // Reload the page to get the updated list
-      location.reload()
+    if ($(e.target).data(`typeofbutton`) !== `add`) {
+      // console.log(e.target)
+
+      updateDevour($(e.target).data(`id`), 1)
     }
-    );
+
   });
 
   $(`.create-form`).on(`submit`, e => {
@@ -94,29 +89,47 @@ $(() => {
         name: input,
       };
 
-      // Send the POST request.
-      $.ajax(`/api/burgers`, {
-        type: `POST`,
-        data: newBurger
-      }).then(
-        function () {
-          // Reload the page to get the updated list
-          location.reload()
-        }
-      )
+      addBurger(newBurger)
 
     }
   })
 
-  $(`.delete-burger`).on(`click`, e => {
-    var id = $(this).data(`id`)
-
+  const deleteBurger = id => {
     // Send the DELETE request.
     $.ajax(`/api/burgers/` + id, {
-      type: `DELETE`
+      type: `DELETE`,
     }).then(() => {
-      // Reload the bpage to get the updated list
+      // Reload the page to get the updated list
       location.reload()
-    })
-  })
+    }
+    )
+  }
+
+  const addBurger = burgername => {// Send the POST request.
+    $.ajax(`/api/burgers`, {
+      type: `POST`,
+      data: burgername
+    }).then(
+      function () {
+        // Reload the page to get the updated list
+        location.reload()
+      }
+    )
+  }
+
+  const updateDevour = (id, state) => {// Send the POST request.
+    // Send the PUT request.
+    $.ajax(`/api/burgers/` + id, {
+      type: `PUT`,
+      data: {
+        devoured: state,
+        date_eaten: `NOW()` // meh, leave it for now
+      }
+    }).then(() => {
+      console.log(`burger updated!`)
+      // Reload the page to get the updated list
+      location.reload()
+    }
+    )
+  }
 })

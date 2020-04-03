@@ -7,6 +7,9 @@ li {
   margin: 5px;
   background: var(--accent-color);
 }
+button:focus {
+  outline: 0 !important;
+}
 
 .bg-hexbutt {
   background: var(--main-color);
@@ -78,7 +81,8 @@ screaming deep aqua
   background: var(--secondary-color) !important;
   color: aliceblue!important;
   border: 3px groove transparent !important;
-  font-size: 1em;
+  font-size: 1.25em;
+  padding: 0 .25em;
 }
 
 .btn:hover {
