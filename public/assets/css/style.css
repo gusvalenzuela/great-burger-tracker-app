@@ -1,32 +1,33 @@
-body, 
-html{
+body, html {
   background: var(--main-color) !important;
   /* margin: 0;
   padding: 0; */
 }
+
 li {
   padding: 5px;
   margin: 5px;
   background: #08787F;
 }
-.bg-hexbutt{
+
+.bg-hexbutt {
   background: var(--main-color);
 }
-.bg-pdp{
+
+.bg-pdp {
   background: #3F012C !important;
 }
-#jumbotron{
+
+#jumbotron {
   border-bottom: 3px solid black;
-  background-color: chocolate ;
-  background-image: linear-gradient(#00000023, #3f012c54),
-  url(../images/filipe-de-rodrigues-JHUkH7nZvTQ-unsplash.jpg);
+  background-color: chocolate;
+  background-image: linear-gradient(#00000023, #3f012c54), url(../images/filipe-de-rodrigues-JHUkH7nZvTQ-unsplash.jpg);
   background-size: cover;
   background-position: center;
 }
 
-#jumbotron .lead , .brand-name {
+#jumbotron .lead, .brand-name {
   font-weight: 600 !important;
-  
 }
 
 /* color pallete:
@@ -39,6 +40,7 @@ screaming deep aqua
 #08787F
 
 */
+
 :root {
   --main-color: #FDB147;
 }
@@ -47,19 +49,15 @@ screaming deep aqua
   font-weight: bold;
 }
 
-.intro-para{
-  background: #3F012C;
+.intro-para {
   color: white;
   /* border-bottom: 3px inset var(--main-color); */
   padding: 2em 0;
-  margin-bottom: 4em;
   /* text-align: left; */
 }
-.ph-divs{
-  background: #3F012C;
+#top-container{
   margin-bottom: 4em;
 }
-
 .create-update-form {
   padding: 5px;
   margin: 5px;
@@ -69,6 +67,7 @@ screaming deep aqua
 .form-group {
   margin-bottom: 5px;
 }
+
 /* #burger{
   padding: 2em;
 } */
@@ -79,12 +78,14 @@ screaming deep aqua
   border: 3px groove transparent !important;
   font-size: 1em;
 }
-.btn:hover{
+
+.btn:hover {
   /* border-color: rgba(63, 1, 44, 0.836) !important; */
   font-size: 1.03em;
   color: var(--main-color) !important;
 }
-.devoured-info{
+
+.devoured-info {
   background: #3F012C;
   padding: .5em;
 }
@@ -97,24 +98,24 @@ screaming deep aqua
   padding-bottom: 3.6947897em;
 }
 
-.footer div>div> a {
+.footer div>div>a {
   text-decoration: none;
 }
-#footy-icons a{
+
+#footy-icons a {
   text-decoration: none;
   display: inline-flex;
   float: right;
   margin-right: .3em;
   margin-bottom: .3em;
 }
+
 #footy-icons {
   font-size: 1.69em;
-  
 }
 
-@media screen and (max-width: 576px){
+@media screen and (max-width: 576px) {
   .btn, .devoured-info {
     font-size: .8em !important;
   }
 }
-
