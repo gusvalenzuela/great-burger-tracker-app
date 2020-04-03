@@ -1,14 +1,9 @@
-<div class="jumbotron jumbotron-fluid p-3 bg-pdp text-white" id="jumbotron">
-  <div class="container">
-    <h1 class="display-4 brand-name">Gooder Burger</h1>
-    <p class="lead">Home of the Gooder Burger™! <br>A great burger virtual meal creater. <br> Enjoy.</p>
-  </div>
-</div>
-
-<div class="container p-0">
-  <div class="row m-0">
-    <div class="col-12 text-center">
-      HELLO WORLD
+<div class="container-lg p-0">
+  <div class="row m-0 justify-content-center">
+    <div class="col text-center">
+      <p class="intro-para">Below you'll find a list of burgers you may "devour" by clicking on the button next to its
+        name and "eating" it. Add burgers to the list by filling the tiny form way below. When "devouring" a burger it
+        moves it to the Devoured Burgers list. Have fun!</p>
     </div>
   </div>
   <div class="row row-cols-1 row-cols-lg-2 m-0">
@@ -16,7 +11,7 @@
     <div class="col">
       <h2 class="text-center mb-3">BURGERS TO EAT</h2>
 
-      <ul class="p-0 text-white" style="list-style: none;">
+      <ul class="p-0 text-white text-center" style="list-style: none;" id="left-side-ul">
         {{#each burgers}}
         {{#unless devoured}}
         <li class="p-0 mb-3 d-flex justify-content-between">
@@ -35,13 +30,13 @@
     <div class="col">
       <h2 class="text-center mb-3">DEVOURED BURGERS</h2>
 
-      <ul class="text-warning p-0" style="list-style: none;">
+      <ul class="text-white p-0" style="list-style: none;" id="right-side-ul">
         {{#each burgers}}
         {{#if devoured}}
         <li class="p-0 mb-3 d-flex justify-content-between">
 
           <span class="m-0 p-2" style="text-decoration:line-through;">{{burger_name}}</span>
-          <span class="devoured-info text-white" data-id="{{id}}" data-eaten="{{devour}}">
+          <span class="devoured-info" data-id="{{id}}" data-eaten="{{devour}}">
             Eaten: {{date_eaten}}
           </span>
 
@@ -55,10 +50,10 @@
 
   <div class="row bg-hexbutt m-0">
     <div class="col-12 d-flex justify-content-center p-4">
-      <form class="row create-form justify-content-center">
-        <h3 class="text-center mb-4">Enter the name of burger you want to devour:</h3>
+      <form class="row create-form justify-content-center" id="burger-form">
+        <h5 class="text-center mb-4">Enter the name of burger you want to devour:</h5>
         <div class="form-group col-12">
-          <textarea type="text" id="burger" name="name" class="w-100 text-center p-2"></textarea> 
+          <textarea type="text" id="burger" name="name" class="w-100 text-center p-2"></textarea>
         </div>
 
         <button type="submit" class="btn2 rounded-0">Add to burger list</button>
@@ -68,4 +63,3 @@
     </div>
   </div>
 </div>
-

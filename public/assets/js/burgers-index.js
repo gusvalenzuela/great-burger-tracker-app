@@ -1,13 +1,13 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(() => {
-  // const isBlank = arg => {
-    
-  //   let test = arg.split(``)
-  //   test.forEach(element => {
-  //     console.log(element)
-  //   });
-  //   // console.log
-  // }
+  if($(`#left-side-ul`)[0].children.length === 0){
+    $(`#left-side-ul`)[0].innerHTML = `<p class="p-2 bg-pdp">No burgers to devour. See form below to enter one.</p>`
+    // console.log($(`#left-side-ul`))
+  } 
+  
+  if($(`#right-side-ul`)[0].children.length === 0){
+    $(`#right-side-ul`)[0].innerHTML = `<p class="p-2 bg-pdp">No burgers have been eaten. Enter and then devour one.</p>`
+  }
 
   $(`.change-state`).on(`click`, e => {
     // reserve for later (eat again)

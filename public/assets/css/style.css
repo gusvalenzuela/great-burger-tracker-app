@@ -1,8 +1,8 @@
 body, 
 html{
-  background: #FDB147;
-  margin: 0;
-  padding: 0;
+  background: var(--main-color) !important;
+  /* margin: 0;
+  padding: 0; */
 }
 li {
   padding: 5px;
@@ -10,14 +10,23 @@ li {
   background: #08787F;
 }
 .bg-hexbutt{
-  background: #FDB147;
+  background: var(--main-color);
 }
 .bg-pdp{
   background: #3F012C !important;
 }
 #jumbotron{
-  border-bottom: 3px solid #08787F;
+  border-bottom: 3px solid black;
+  background-image: linear-gradient(#3F012C36, rgba(0, 0, 0, 0.33)),
+                  url(../images/filipe-de-rodrigues-JHUkH7nZvTQ-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
 }
+
+#jumbotron .lead , .brand-name {
+  font-weight: 600 !important;
+}
+
 /* color pallete:
   
 hexahedral butterscotch
@@ -28,9 +37,18 @@ screaming deep aqua
 #08787F
 
 */
+:root {
+  --main-color: #FDB147;
+}
 
 .label {
   font-weight: bold;
+}
+.intro-para{
+  background: wheat;
+  border: 2px inset black;
+  padding: .6em;
+  text-align: justify;
 }
 
 .create-update-form {
@@ -55,36 +73,39 @@ screaming deep aqua
 .btn:hover{
   /* border-color: rgba(63, 1, 44, 0.836) !important; */
   font-size: 1.03em;
-  color: #FDB147 !important;
+  color: var(--main-color) !important;
 }
 .devoured-info{
   background: #3F012C;
   padding: .5em;
-}
-.pusher {
-  height: 75px;
 }
 
 .footer {
   background: #000;
   color: white;
   border-top: 5px solid #08787F;
-  height: 150px;
-  padding-top: 16px;
-  width: 100%;
-  margin: 0;
-  overflow: hidden;
-  /* position: fixed; */
-  left: 0;
-  right: 0;
-  bottom: 0;
+  padding-top: 1em;
+  padding-bottom: 3.6947897em;
+}
+
+.footer div>div> a {
+  text-decoration: none;
+}
+#footy-icons a{
+  text-decoration: none;
+  display: inline-flex;
+  float: right;
+  margin-right: .3em;
+  margin-bottom: .3em;
+}
+#footy-icons {
+  font-size: 1.69em;
+  
 }
 
 @media screen and (max-width: 576px){
   .btn, .devoured-info {
-    font-size: .69em !important;
-  }
-  div ul span {
-    font-size: .80em !important;
+    font-size: .8em !important;
   }
 }
+

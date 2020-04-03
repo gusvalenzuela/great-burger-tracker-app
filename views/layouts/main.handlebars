@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
 	<meta charset="UTF-8">
@@ -7,18 +7,41 @@
 	<link rel="stylesheet" href="./assets/css/style.css" type="text/css" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- font-Awesome  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Great Burger! | Home of a Great Burger</title>
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="./assets/js/burgers-index.js"></script>
 </head>
 
-<body>
-	<div class="container-fluid p-0 bg-hexbutt">
-		{{{ body }}}
-		<div class="pusher"></div>
+<body class="d-flex flex-column h-100">
+	<div class="jumbotron jumbotron-fluid p-3 mb-3 text-white" id="jumbotron">
+		<div class="container jumbo-container">
+			<h1 class="display-4 brand-name">Gooder Burger</h1>
+			<p class="lead">Home of the Gooder Burger™! <br>A great burger virtual meal creater. <br> Enjoy.</p>
+		</div>
 	</div>
-	
-	<footer class="clearfix footer">&copy; AND STGUFF</footer>
+	<main role="main" class="container-fluid flex-shrink-0 p-0 bg-hexbutt mb-3">
+		{{{ body }}}
+		{{!-- <div class="pusher"></div> --}}
+	</main>
+
+	<footer class="footer container-fluid mt-auto">
+		<div class="row justify-content-between">
+			<div class="col-auto">
+				<a href="https://github.com/gusvalenzuela/great-burger-tracker-app" class="text-white" >&copy; 2020 grV</a> <a href="https://github.com/gusvalenzuela/great-burger-tracker-app">\\ source code</a>
+			</div>
+			<div class="col" id="footy-icons">
+				<a href="#target-1" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				<a href="#target-1" target="_blank"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+				<a href="#target-1" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+				<a href="https://github.com/gusvalenzuela" target="_blank"><i class="fa fa-github"
+						aria-hidden="true"></i></a>
+				<a href="https://www.linkedin.com/in/gus-valenzuela-b73b0296/" target="_blank"><i class="fa fa-linkedin"
+						aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
 </body>
 
 </html>

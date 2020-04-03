@@ -41,7 +41,7 @@ function objToSql(ob) {
 
 // Object for all our SQL statement functions.
 const orm = {
-  all: (tableInput, cb) => {
+  selectAll: (tableInput, cb) => {
     let queryString = `SELECT * FROM ${tableInput};`;
     connection.query(queryString, (err, result) => {
       if (err) { throw err }
@@ -49,7 +49,7 @@ const orm = {
     })
   },
 
-  allByDate: (tableInput, type, cb) => {
+  selectAllByDate: (tableInput, type, cb) => {
     let queryString = `SELECT * FROM ${tableInput} ORDER BY date_eaten ${type};`;
     connection.query(queryString, (err, result) => {
       if (err) { throw err }
@@ -59,14 +59,14 @@ const orm = {
 
   // An example of objColVals would be {devoured: true, amt_eaten: 4}
   // example of condition would be {id: 42}
-  update: (table, objColVals, condition, cb) => {
+  updateOne: (table, objColVals, condition, cb) => {
     connection.query(`UPDATE ${table} SET ${objToSql(objColVals)} WHERE ${condition}`, (err, res) => {
       if (err) { throw err; }
       cb(res)
     })
   },
 
-  create: (table, cols, vals, cb) => {
+  insertOne: (table, cols, vals, cb) => {
     connection.query(`INSERT INTO ${table} (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)})`, vals, (err, result) => {
       if (err) { throw err; }
       cb(result)
