@@ -37,8 +37,8 @@ screaming deep aqua
 }
 
 #jumbotron {
-  border-bottom: 3px solid black;
-  background-color: #3F012C;
+  /* border-bottom: 3px solid black; */
+  background-color: var(--accent-color);
   background-image: 
     /* linear-gradient(#00000023, var(--secondary-color)54),  */
     url(../images/filipe-de-rodrigues-JHUkH7nZvTQ-unsplash.jpg);
@@ -57,7 +57,7 @@ screaming deep aqua
 .intro-para {
   color: white;
   /* border-bottom: 3px inset var(--main-color); */
-  padding: 2em 0;
+  padding: 4em 0;
   /* text-align: left; */
 }
 #top-container{
