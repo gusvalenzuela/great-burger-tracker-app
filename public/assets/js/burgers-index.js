@@ -58,32 +58,33 @@ $(() => {
           if(newName !== null) {
             newName = newName.trim()
           }
-
-          // makes sure input is not empty string
-          if (newName.length > 0) {
+          // makes sure input is not null nor empty string
+          if (newName === null) {
+            break
+          } else if (newName.length > 0) {
             updateBurgerName($(e.target).data(`id`), newName)
           }
           
           resetPrimary()
-          break;
+          break
         case `save`:
           console.log(`saving stuff`)
-          break;
+          break
         case `add`:
           // let confirm = 
           if (confirm(`Would you like to add this back to the "burgers to eat" list?`) === true) {
             updateDevour($(e.target).data(`id`), 0)
           }
-          break;
+          break
         case `delete`:
           if (confirm(`Would you like to delete this burger?`) === true) {
             // Send the DELETE request - passing id as parameter
             deleteBurger($(e.target).data(`id`))
           }
-          break;
+          break
 
         default:
-          break;
+          break
       }
     }
   }
