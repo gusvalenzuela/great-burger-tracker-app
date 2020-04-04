@@ -69,7 +69,12 @@ screaming deep aqua
   background: var(--accent-color);
   border: none;
   outline: 0;
+  /* box-shadow: inset 0.25rem 0.25rem 0 #ddd; */
   
+}
+.undevoured-burger-names:read-write{
+  box-shadow: inset 0.25rem 0.25rem 0 #ddd;
+  border: .125px solid black;
 }
 .create-update-form {
   padding: 5px;
