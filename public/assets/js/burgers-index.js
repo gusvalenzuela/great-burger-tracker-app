@@ -2,23 +2,54 @@
 $(() => {
   const leftCol = $(`#left-side-ul`)[0]
   const rightCol = $(`#right-side-ul`)[0]
+  let confirmsAre = $(`#disable-devour-alerts`).data(`alerts`)
   let activeButtonsPrimary = $()
   let activeButtonsSecondary = $()
+
+  if (confirmsAre === `disabled`) {
+    $(`#disable-devour-alerts`).attr(`class`, `p-2 fa fa-toggle-off`)
+  } else {
+    $(`#disable-devour-alerts`).attr(`class`, `p-2 fa fa-toggle-on`)
+  }
 
   const resetPrimary = () => {
     activeButtonsPrimary.show()
     activeButtonsSecondary.hide()
   }
 
+  $(`#disable-devour-alerts`).on(`click`, e => {
+    // if(confirmsAre = false){
+    // const cfm = confirm(`Enable alerts for devoured buttons?`)
+    const change = { enabled: `` }
+
+    if ($(`#disable-devour-alerts`).data(`alerts`) === `enabled`) {
+      change.enabled = false
+    } else {
+      change.enabled = true
+
+    }
+
+    $.ajax(`/api/confirmations/` + 1, {
+      type: `PUT`,
+      data: change
+    }).then(
+      function () {
+        // Reload the page to get the updated list
+        location.reload()
+      }
+    )
+  })
+
   // if no list items in "burgers to eat" display message
   if (leftCol.children.length === 0) {
-    leftCol.innerHTML = `<p class="p-2 bg-pdp">No burgers to devour. See form below to enter one.</p>`
+    leftCol.innerHTML = `<p class="p-2" style="text-align: center; color: #3F012C; font-weight: 700;">Nothing here. See form below.</p>`
     // console.log($(`#left-side-ul`))
   }
 
   // if no list items in "devoured burgers" display message
   if (rightCol.children.length === 0) {
-    rightCol.innerHTML = `<p class="p-2 bg-pdp">No burgers have been eaten. Enter and then devour one.</p>`
+    $(`#alerts-confirmation`).hide()
+    rightCol.innerHTML = `<p class="p-2" style="text-align: center; color: #3F012C; font-weight: 700;">Nothing devoured. Enter a burger below.</p>`
   }
 
   const dothething = e => {
@@ -55,7 +86,7 @@ $(() => {
         case `edit`:
           let newName = prompt(`Enter new name for burger`)
 
-          if(newName !== null) {
+          if (newName !== null) {
             newName = newName.trim()
           }
           // makes sure input is not null nor empty string
@@ -64,7 +95,7 @@ $(() => {
           } else if (newName.length > 0) {
             updateBurgerName($(e.target).data(`id`), newName)
           }
-          
+
           resetPrimary()
           break
         case `save`:
@@ -72,12 +103,12 @@ $(() => {
           break
         case `add`:
           // let confirm = 
-          if (confirm(`Would you like to add this back to the "burgers to eat" list?`) === true) {
+          if (confirmsAre === `disabled` || confirm(`Would you like to add this back to the "burgers to eat" list?`) === true) {
             updateDevour($(e.target).data(`id`), 0)
           }
           break
         case `delete`:
-          if (confirm(`Would you like to delete this burger?`) === true) {
+          if (confirmsAre === `disabled` || confirm(`Would you like to delete this burger?`) === true) {
             // Send the DELETE request - passing id as parameter
             deleteBurger($(e.target).data(`id`))
           }

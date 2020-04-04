@@ -11,6 +11,7 @@ button:focus {
   outline: 0 !important;
 }
 
+
 .bg-hexbutt {
   background: var(--main-color);
 }
@@ -80,7 +81,7 @@ screaming deep aqua
 .btn, .btn2 {
   background: var(--secondary-color) !important;
   color: aliceblue!important;
-  border: 3px groove transparent !important;
+  border: 2px groove transparent !important;
   font-size: 1.25em;
   padding: 0 .25em;
 }
@@ -94,6 +95,9 @@ screaming deep aqua
 .devoured-info {
   background: var(--secondary-color);
   padding: .5em;
+}
+#disable-devour-alerts{
+  cursor: pointer;
 }
 
 .footer {
@@ -119,9 +123,6 @@ screaming deep aqua
 #footy-icons {
   font-size: 1.69em;
 }
+/*  @media screen and (max-width: 576px) {
 
-@media screen and (max-width: 576px) {
-  .btn, .devoured-info {
-    font-size: .8em !important;
-  }
-}
+} */

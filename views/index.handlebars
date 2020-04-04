@@ -10,6 +10,7 @@
           next to its
           name. You may add more burgers to the list by filling the tiny form way below. "Devouring" a burger simply
           moves it to the Devoured Burgers list. Have fun!</p>
+
       </div>
     </div>
     <div class="col-2"></div>
@@ -41,7 +42,7 @@
               </span>
               <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="expand"
                 data-name="morebutton">
-                <i class="fa fa-arrows-h" data-id="{{id}}" data-isbutton="true" data-typeofbutton="expand"
+                <i class="fa fa-ellipsis-h" data-id="{{id}}" data-isbutton="true" data-typeofbutton="expand"
                   data-name="morebutton"></i></button>
               {{!-- <span>
               </span> --}}
@@ -60,7 +61,11 @@
 
     {{!-- right side --}}
     <div class="col mb-4 p-1">
-      <h2 class="text-center mb-3">DEVOURED BURGERS</h2>
+      <h2 class="text-center mb-4">DEVOURED BURGERS</h2>
+      <p class="text-center" style="font-size: 1em; margin-top: -1.5em;" id="alerts-confirmation">
+        confirmation alerts are <b>{{confirmations}}</b>
+        <span class="" id="disable-devour-alerts" data-alerts="{{confirmations}}"></span>
+      </p>
 
       <ul class="text-white p-0" style="list-style: none;" id="right-side-ul">
         {{#each burgers}}
@@ -81,7 +86,7 @@
               </span>
               <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="expand"
                 data-name="morebutton">
-                <i class="fa fa-arrows-h" data-id="{{id}}" data-isbutton="true" data-typeofbutton="expand"
+                <i class="fa fa-ellipsis-h" data-id="{{id}}" data-isbutton="true" data-typeofbutton="expand"
                   data-name="morebutton"></i></button>
               {{!-- <span>
               </span> --}}
@@ -98,17 +103,14 @@
   </div>
 
   <div class="row bg-hexbutt m-0">
-    <div class="col-12 d-flex justify-content-center p-4">
+    <div class="col-12 d-flex justify-content-center px-4 pb-4 pt-0">
       <form class="row create-form justify-content-center" id="burger-form">
         <h5 class="text-center mb-4">Name of burger you want to devour:</h5>
         <div class="form-group col-12">
           <input type="text" id="burger" name="name" placeholder="enter name" class="w-100 text-center p-2"></input>
         </div>
-
-        <button type="submit" class="btn2 rounded-0">Add to burger list</button>
-
+        <button type="submit" class="btn2 rounded-0 p-2">Add to burger list</button>
       </form>
-
     </div>
   </div>
 </div>

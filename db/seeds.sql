@@ -3,3 +3,7 @@ INSERT INTO burgers (burger_name, date_eaten, devoured) VALUES ('Great Burger', 
 INSERT INTO burgers (burger_name, date_eaten, devoured) VALUES ('Triple Great Burger Jr.', SUBTIME(NOW(), 15000), true);
 
 SELECT * FROM burgers;
+
+INSERT INTO confirmations (confirm_name) VALUES ("ALL");
+
+SELECT * FROM confirmations;
