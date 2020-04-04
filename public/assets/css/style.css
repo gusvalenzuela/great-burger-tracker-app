@@ -65,7 +65,11 @@ screaming deep aqua
   margin-bottom: 4em;
 }
 .undevoured-burger-names{
+  color: #fff;
   background: var(--accent-color);
+  border: none;
+  outline: 0;
+  
 }
 .create-update-form {
   padding: 5px;

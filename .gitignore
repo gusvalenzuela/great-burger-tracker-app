@@ -11,6 +11,7 @@
 *.sln.docstates
 Solved/
 homework_instructions.md
+bug*.png
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

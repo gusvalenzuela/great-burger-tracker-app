@@ -30,37 +30,41 @@
       <ul class="p-0 text-white text-center" style="list-style: none;" id="left-side-ul">
         {{#each burgers}}
         {{#unless devoured}}
-        <li class="p-0 mb-3 d-flex justify-content-between">
-          <span type="text" class="text-white m-0 p-2 undevoured-burger-names" value="{{burger_name}}"
-            data-id="{{id}}">
-          {{burger_name}}
-          </span>
-          <div class="devoured-info d-flex" data-id="{{id}}" data-name="devoured-info">
-            <button class="change-state btn rounded-0 py-0" data-id="{{id}}" data-eaten="{{devour}}">
-              Devour it!
-            </button>
+        <div class="container">
 
-            <div class="data-eaten-buttons">
-              <span style="display: none;">
-                <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="edit">
-                  <i class="fa fa-pencil" data-id="{{id}}" data-isbutton="true" data-typeofbutton="edit"></i></button>
-                {{!-- <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="save">
+          {{!-- <li class="p-0 mb-3 d-flex justify-content-between"> --}}
+          <li class="p-0 mb-3 row d-flex">
+            <input type="text" class="col m-0 p-2 undevoured-burger-names" readonly
+              value="{{burger_name}}" data-id="{{id}}">
+            {{!-- {{burger_name}} --}}
+            </input>
+            <div class="col-auto devoured-info d-flex p-2" data-id="{{id}}" data-name="devoured-info">
+              <button class="change-state btn rounded-0 py-0" data-id="{{id}}" data-eaten="{{devour}}">
+                Devour it!
+              </button>
+
+              <div class="data-eaten-buttons">
+                <span style="display: none;">
+                  <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="edit">
+                    <i class="fa fa-pencil" data-id="{{id}}" data-isbutton="true" data-typeofbutton="edit"></i></button>
+                  {{!-- <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="save">
                   <i class="fa fa-check" data-id="{{id}}" data-isbutton="true" data-typeofbutton="save"></i></button> --}}
-              </span>
-              <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="expand"
-                data-name="morebutton">
-                <i class="fa fa-ellipsis-h" data-id="{{id}}" data-isbutton="true" data-typeofbutton="expand"
-                  data-name="morebutton"></i></button>
-              {{!-- <span>
+                </span>
+                <button class="btn2" data-id="{{id}}" data-isbutton="true" data-typeofbutton="expand"
+                  data-name="morebutton">
+                  <i class="fa fa-ellipsis-h" data-id="{{id}}" data-isbutton="true" data-typeofbutton="expand"
+                    data-name="morebutton"></i></button>
+                {{!-- <span>
               </span> --}}
+              </div>
+              {{!-- <div> --}}
+              {{!-- </div> --}}
             </div>
-            {{!-- <div> --}}
-            {{!-- </div> --}}
-          </div>
 
 
 
-        </li>
+          </li>
+        </div>
         {{/unless}}
         {{/each}}
       </ul>

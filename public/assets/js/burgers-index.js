@@ -14,6 +14,19 @@ $(() => {
 
   const nameChangesData = {}
 
+  // Move Cursor to End of Input
+  // Where el is a reference to an input or textarea.
+  const moveCursorToEnd = el => {
+    if (typeof el.selectionStart == "number") {
+      el.selectionStart = el.selectionEnd = el.value.length;
+    } else if (typeof el.createTextRange != "undefined") {
+      el.focus();
+      var range = el.createTextRange();
+      range.collapse(false);
+      range.select();
+    }
+  }
+
   const resetPrimary = () => {
     activeButtonsPrimary.show()
     activeButtonsSecondary.hide()
@@ -55,9 +68,11 @@ $(() => {
   }
 
   const dothething = e => {
+    e.preventDefault()
+    let burgerID = $(e.target).data(`id`)
+
     const infoList = $(`.devoured-info`)
 
-    e.preventDefault()
     if ($(e.target).data(`name`) === `morebutton`) {
       for (let i = 0; i < infoList.length; i++) {
 
@@ -86,19 +101,33 @@ $(() => {
     if ($(e.target).data(`isbutton`)) {
       switch ($(e.target).data(`typeofbutton`)) {
         case `edit`:
-          let newName = prompt(`Enter new name for burger`)
+          let brg = $(`.undevoured-burger-names[data-id="${burgerID}"]`)[0]
+          let ogBrgName = brg.value
+          const editSaveBtn = $(e.target)
 
-          if (newName !== null) {
-            newName = newName.trim()
-          }
-          // makes sure input is not null nor empty string
-          if (newName === null) {
-            break
-          } else if (newName.length > 0) {
-            updateBurgerName($(e.target).data(`id`), newName)
-          }
+          $(brg).attr(`readonly`, false).attr(`style`, `background: white; color: black;`).focus()
+          moveCursorToEnd(brg)
+          $(editSaveBtn).attr(`class`, `fa fa-save`)
 
-          resetPrimary()
+          $(editSaveBtn).on(`click`, (e) => {
+            e.preventDefault()
+            if(!$(brg).context.readOnly){
+              updateBurgerName(burgerID, $(brg).context.value)
+            }
+          })
+          $(window).on(`click`, event => {
+            event.preventDefault()
+            if ($(event.target).data(`id`) !== burgerID) {
+              console.log(`this is NOT of the burger`)
+              resetPrimary()
+              $(editSaveBtn).attr(`class`, `fa fa-edit`)
+              $(brg).attr(`readonly`, true).attr(`style`, ``)
+              $(brg).context.value = ogBrgName
+              $(window).unbind()
+              return
+            } 
+            
+          })
           break
         case `save`:
           console.log(`saving stuff`)
@@ -139,11 +168,11 @@ $(() => {
   $(`.undevoured-burger-names`).on(`focusout`, e => {
     // console.log(e, `focus out`)
   })
-  
-  $(`.undevoured-burger-names`).on(`focusin`, e => {
-    console.log($(e.target).data(`id`))
-    console.log($(e.target).context.value)
-  })
+
+  // $(`.undevoured-burger-names`).on(`focusin`, e => {
+  //   console.log($(e.target).data(`id`))
+  //   console.log($(e.target).context.value)
+  // })
 
   $(`.change-state`).on(`click`, e => {
 
