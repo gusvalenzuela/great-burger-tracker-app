@@ -22,12 +22,19 @@
     {{!-- left side  --}}
     <div class="col mb-4 p-1">
       <h2 class="text-center mb-3">BURGERS TO EAT</h2>
+      <p class="text-center" style="font-size: 1em; margin-top: -1.5em; display:none;" id="">
+        Click here to save name changes to server
+        <span class="" id="" data-alerts="{{confirmations}}"></span>
+      </p>
 
       <ul class="p-0 text-white text-center" style="list-style: none;" id="left-side-ul">
         {{#each burgers}}
         {{#unless devoured}}
         <li class="p-0 mb-3 d-flex justify-content-between">
-          <span class="m-0 p-2">{{burger_name}}</span>
+          <span type="text" class="text-white m-0 p-2 undevoured-burger-names" value="{{burger_name}}"
+            data-id="{{id}}">
+          {{burger_name}}
+          </span>
           <div class="devoured-info d-flex" data-id="{{id}}" data-name="devoured-info">
             <button class="change-state btn rounded-0 py-0" data-id="{{id}}" data-eaten="{{devour}}">
               Devour it!

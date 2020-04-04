@@ -12,6 +12,8 @@ $(() => {
     $(`#disable-devour-alerts`).attr(`class`, `p-2 fa fa-toggle-on`)
   }
 
+  const nameChangesData = {}
+
   const resetPrimary = () => {
     activeButtonsPrimary.show()
     activeButtonsSecondary.hide()
@@ -49,7 +51,7 @@ $(() => {
   // if no list items in "devoured burgers" display message
   if (rightCol.children.length === 0) {
     $(`#alerts-confirmation`).hide()
-    rightCol.innerHTML = `<p class="p-2" style="text-align: center; color: #3F012C; font-weight: 700;">Nothing devoured. Enter a burger below.</p>`
+    rightCol.innerHTML = `<p class="p-2" style="text-align: center; color: #3F012C; font-weight: 700;">Nothing devoured. Enter a burger below to begin.</p>`
   }
 
   const dothething = e => {
@@ -134,6 +136,15 @@ $(() => {
     console.log(e, `focus out`)
   })
 
+  $(`.undevoured-burger-names`).on(`focusout`, e => {
+    // console.log(e, `focus out`)
+  })
+  
+  $(`.undevoured-burger-names`).on(`focusin`, e => {
+    console.log($(e.target).data(`id`))
+    console.log($(e.target).context.value)
+  })
+
   $(`.change-state`).on(`click`, e => {
 
     if ($(e.target).data(`typeofbutton`) !== `add`) {
@@ -158,7 +169,7 @@ $(() => {
       };
 
       addBurger(newBurger)
-
+      $(`#burger`).val(``)
     }
   })
 
