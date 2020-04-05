@@ -134,12 +134,12 @@ $(() => {
           break
         case `add`:
           // let confirm = 
-          if (confirmsAre === `disabled` || confirm(`Would you like to add this back to the "burgers to eat" list?`) === true) {
+          if (confirmsAre === `disabled` || confirm(`This will add the devoured burger to "burgers to eat" list`) === true) {
             updateDevour($(e.target).data(`id`), 0)
           }
           break
         case `delete`:
-          if (confirmsAre === `disabled` || confirm(`Would you like to delete this burger?`) === true) {
+          if (confirmsAre === `disabled` || confirm(`This will delete this burger`) === true) {
             // Send the DELETE request - passing id as parameter
             deleteBurger($(e.target).data(`id`))
           }

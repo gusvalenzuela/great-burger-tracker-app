@@ -5,11 +5,6 @@ Gooder Burger!
 Main Page: 
 ![Screenshot of web app/page](/screenshot.PNG "Screenshot of web app/page")
 
-Main App: 
-![Screenshot of web app/page](/screenshot2.PNG "Screenshot of web app/page")
-
-
-
 Description
 ---
 
@@ -19,5 +14,9 @@ Description
 
 [great-burger-app.herokuapp.com](https://great-burger-app.herokuapp.com/)
 
+![Screenshot of web app/page](/screenshot2.PNG "Screenshot of web app/page")
+
+
+
 #### Mobile-Friendly: 
-![Screenshot of web app/page](/screenshot3.PNG "Screenshot of web app/page in mobile view")
+![Screenshot of web app/page](/screenshot3.PNG "Screenshot of web app/page in mobile view")![Screenshot of web app/page](/screenshot4.PNG "Screenshot of web app/page in mobile view")
