@@ -4,7 +4,7 @@
   "description": "A simple tracker to keep track of burgers the user would like to eat.",
   "main": "great-burger.js",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-handlebars": "^4.0.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.28",
